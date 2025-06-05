@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.btn-primary {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+}
+
+.btn-secondary {
+  @apply bg-red-500 text-white font-bold py-2 px-4 rounded-lg cursor-pointer;
+}
+
+.card-small {
+  @apply shadow-sm rounded-lg py-2 px-2;
+}
+
+.input-text {
+  @apply border rounded-lg py-3 px-3;
+}
