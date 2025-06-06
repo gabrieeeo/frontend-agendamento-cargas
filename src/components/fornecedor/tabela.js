@@ -1,3 +1,5 @@
+import { removerFornecedor } from './remover.js';
+
 //tabela de fornecedores
 const tabelaFornecedores = document.getElementById('tabela-fornecedores');
 const tr = document.createElement('tr');
