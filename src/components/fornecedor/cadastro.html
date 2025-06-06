@@ -15,7 +15,7 @@
                 <li class="card-small"><a href="../home/home.html" class="block w-full h-full" >Início</a></li>
                 <li class="card-small">Novo Agendamento</li>
                 <li class="card-small">Listar Agendamentos</li>
-                <li class="card-small bg-gray-50"><a href="#" class="block w-full h-full" >Cadastrar Fornecedor</a></li>
+                <li class="card-small bg-gray-100"><a href="#" class="block w-full h-full" >Cadastrar Fornecedor</a></li>
                 <li class="card-small">Listar Fornecedores</li>
             </ul>
         </div>
@@ -36,23 +36,46 @@
     <!--novo fornecedor-->
     <section>
         <div class="m-8">
-            <div class="mb-3">
+            <div class="mb-4">
                 <h1 class="text-4xl">Cadastro de Fornecedor</h1>
             </div>
             <div class="flex">
-                <form>
+                <form class="space-x-3">
                     <input type="text" placeholder="Nome do fornecedor" class="input-text" id="nome-fornecedor">
                     <input type="text" placeholder="CNPJ do fornecedor" class="input-text" id="cnpj-fornecedor">
                 </form>
                 <div class="flex justify-between items-center ml-4 gap-2">
                     <button class="btn-primary" id="btn-cadastrar">Cadastrar</button>
-                    <button class="btn-primary">Editar</button>
-                    <button class="btn-secondary">Remover</button>
                 </div>
             </div>
         </div>
+        <!--tabela de fornecedores-->
+        <div class="m-8">
+            <table class="w-[100rem]">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="px-2 py-2">ID</th>
+                        <th class="px-2 py-2">Fornecedor</th>
+                        <th class="px-2 py-2">CNPJ</th>
+                        <th class="px-2 py-2">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-fornecedores">
+
+                </tbody>
+                <div>
+                    <button id="btn-anterior" class="bg-gray-100 px-4 py-2 rounded-lg  disabled:opacity-50">Anterior</button>
+                    <span id="pagina-info"></span>
+                    <button id="btn-proximo" class="bg-gray-100 px-4 py-2 rounded-lg disabled:opacity-50">Próximo</button>
+                </div>
+            </table>
+        </div>
     </section>
 
+    
+
+
     <script src="cadastro.js"></script>
+    <script src="tabela.js"></script>
 
 </body>    

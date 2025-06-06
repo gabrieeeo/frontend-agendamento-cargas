@@ -2,6 +2,7 @@ const btnCadastrar = document.getElementById('btn-cadastrar');
 const nomeFornecedor = document.getElementById('nome-fornecedor');
 const cnpjFornecedor = document.getElementById('cnpj-fornecedor');
 
+//cadastrar
 btnCadastrar.addEventListener('click', async () => {
     fetch('http://localhost:8080/fornecedores', {
         method: 'POST',
