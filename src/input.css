@@ -8,6 +8,10 @@
   @apply bg-red-500 text-white font-bold py-2 px-4 rounded-lg cursor-pointer;
 }
 
+.btn-terciary {
+  @apply bg-gray-600 text-white font-bold py-2 px-4 rounded-lg cursor-pointer;
+}
+
 .card-small {
   @apply shadow-sm rounded-lg py-2 px-2;
 }

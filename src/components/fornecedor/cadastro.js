@@ -1,3 +1,5 @@
+import { atualizarTabela } from './tabela.js';
+
 const btnCadastrar = document.getElementById('btn-cadastrar');
 const nomeFornecedor = document.getElementById('nome-fornecedor');
 const cnpjFornecedor = document.getElementById('cnpj-fornecedor');
@@ -17,6 +19,11 @@ btnCadastrar.addEventListener('click', async () => {
     if (!response.ok) throw new Error('Erro ao fazer a requisição!');
     return response.json();
 }).then(data => {
+    // Limpa os campos após o cadastro
+    nomeFornecedor.value = '';
+    cnpjFornecedor.value = '';
+    // Atualiza a tabela de fornecedores
+    atualizarTabela();
     alert('Fornecedor cadastrado com sucesso!');
 }).catch(error => {
     alert('Erro ao cadastrar fornecedor: ' + error.message);

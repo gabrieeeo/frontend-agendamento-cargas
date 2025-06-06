@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         })
 });
 
-function renderTabela() {
+ function renderTabela() {
     tabelaFornecedores.innerHTML = ''; // Limpa a tabela antes de renderizar
     const inicio = (paginaAtual - 1) * porPagina;
     const fim = inicio + porPagina;
@@ -36,6 +36,13 @@ function renderTabela() {
     document.getElementById('pagina-info').innerText = `Página ${paginaAtual}`;
 }
 
+export async function atualizarTabela() {
+    const response = await fetch('http://localhost:8080/fornecedores');
+    fornecedores = await response.json();
+    renderTabela();
+    atualizarBotoes();
+}
+
 function atualizarBotoes() {
     const totalPaginas = Math.ceil(fornecedores.length / porPagina);
     document.getElementById('btn-anterior').disabled = paginaAtual === 1;
@@ -43,11 +50,9 @@ function atualizarBotoes() {
 }
 
 document.getElementById('btn-proximo').addEventListener('click', () => {
-    if (paginaAtual <= 1) {
     paginaAtual++;
     renderTabela();
     atualizarBotoes();
-    }
 });
 
 document.getElementById('btn-anterior').addEventListener('click', () => {

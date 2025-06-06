@@ -51,7 +51,12 @@
         </div>
         <!--tabela de fornecedores-->
         <div class="m-8">
-            <table class="w-[100rem]">
+            <div>
+                <button id="btn-anterior" class="btn-terciary disabled:opacity-50">Anterior</button>
+                <span id="pagina-info"></span>
+                <button id="btn-proximo" class="btn-terciary disabled:opacity-50">Próximo</button>
+            </div>
+            <table class="w-[100rem] mt-8">
                 <thead>
                     <tr class="bg-gray-100">
                         <th class="px-2 py-2">ID</th>
@@ -63,11 +68,6 @@
                 <tbody id="tabela-fornecedores">
 
                 </tbody>
-                <div>
-                    <button id="btn-anterior" class="bg-gray-100 px-4 py-2 rounded-lg  disabled:opacity-50">Anterior</button>
-                    <span id="pagina-info"></span>
-                    <button id="btn-proximo" class="bg-gray-100 px-4 py-2 rounded-lg disabled:opacity-50">Próximo</button>
-                </div>
             </table>
         </div>
     </section>
@@ -75,7 +75,7 @@
     
 
 
-    <script src="cadastro.js"></script>
-    <script src="tabela.js"></script>
+    <script type="module" src="cadastro.js"></script>
+    <script type="module" src="tabela.js"></script>
 
 </body>    
