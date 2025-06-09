@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(data => {
             fornecedores = data;
             renderTabela();
-            atualizarBotoes()
+            atualizarBotoes();
         })
 });
 
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             </td>
         `;
 
-    // Editar
     tr.querySelector('#btn-editar').addEventListener('click', function editarHandler() {
     const tdNome = tr.querySelector('#nome');
     const tdCnpj = tr.querySelector('#cnpj');
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnEditar = tr.querySelector('#btn-editar');
     btnEditar.textContent = 'Salvar';
 
-    // Remove o antigo event listener para evitar múltiplos envios
     btnEditar.replaceWith(btnEditar.cloneNode(true));
     const btnSalvar = tr.querySelector('#btn-editar');
     btnSalvar.textContent = 'Salvar';
