@@ -17,14 +17,13 @@ btnCadastrar.addEventListener('click', async () => {
         })
 }).then(response => {
     if (!response.ok) throw new Error('Erro ao fazer a requisição!');
+    atualizarTabela();
     return response.json();
 }).then(data => {
-    // Limpa os campos após o cadastro
     nomeFornecedor.value = '';
     cnpjFornecedor.value = '';
-    // Atualiza a tabela de fornecedores
-    atualizarTabela();
     alert('Fornecedor cadastrado com sucesso!');
+    atualizarTabela();
 }).catch(error => {
     alert('Erro ao cadastrar fornecedor: ' + error.message);
     console.error('Erro:', error);
