@@ -27,13 +27,46 @@ document.addEventListener('DOMContentLoaded', async () => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td class="px-3 py-3 text-center">${fornecedor.id}</td>
-            <td class="px-3 py-3 text-center">${fornecedor.nome}</td>
-            <td class="px-3 py-3 text-center">${fornecedor.cnpj}</td>
+            <td class="px-3 py-3 text-center" id="nome">${fornecedor.nome}</td>
+            <td class="px-3 py-3 text-center" id="cnpj">${fornecedor.cnpj}</td>
             <td class="px-3 py-3 text-center">
-                <button class="btn-primary">Editar</button>
+                <button class="btn-primary" id="btn-editar">Editar</button>
                 <button class="btn-secondary" id="btn-remover">Remover</button>
             </td>
         `;
+
+    // Editar
+    tr.querySelector('#btn-editar').addEventListener('click', function editarHandler() {
+    const tdNome = tr.querySelector('#nome');
+    const tdCnpj = tr.querySelector('#cnpj');
+    const nomeAtual = tdNome.textContent;
+    const cnpjAtual = tdCnpj.textContent;
+
+    tdNome.innerHTML = `<input type="text" class="input-text" value="${nomeAtual}">`;
+    tdCnpj.innerHTML = `<input type="text" class="input-text" value="${cnpjAtual}">`;
+
+    const btnEditar = tr.querySelector('#btn-editar');
+    btnEditar.textContent = 'Salvar';
+
+    // Remove o antigo event listener para evitar múltiplos envios
+    btnEditar.replaceWith(btnEditar.cloneNode(true));
+    const btnSalvar = tr.querySelector('#btn-editar');
+    btnSalvar.textContent = 'Salvar';
+
+    btnSalvar.addEventListener('click', async function salvarHandler() {
+        const novoNome = tdNome.querySelector('input').value;
+        const novoCnpj = tdCnpj.querySelector('input').value;
+
+        await fetch(`http://localhost:8080/fornecedores/${fornecedor.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome: novoNome, cnpj: novoCnpj })
+        });
+
+        await atualizarTabela();
+    });
+});
+
         const btnRemover = tr.querySelector('#btn-remover');
         btnRemover.addEventListener('click', () => {
             removerFornecedor(fornecedor.id);
