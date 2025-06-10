@@ -7,12 +7,13 @@ let paginaAtual = 1;
 const porPagina = 10;
 
 document.addEventListener('DOMContentLoaded', async () => {
+    document.getElementById('pagina-info').innerText = `Página ${paginaAtual}`;
+    atualizarBotoes();
     fetch('http://localhost:8080/fornecedores')
         .then(response => response.json())
         .then(data => {
             fornecedores = data;
             renderTabela();
-            atualizarBotoes();
         })
 });
 
