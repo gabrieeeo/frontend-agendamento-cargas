@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             </td>
         `;
 
-    tr.querySelector('#btn-editar').addEventListener('click', function editarHandler() {
+    const btnRemover = tr.querySelector('#btn-remover');
+    const btnEditar = tr.querySelector('#btn-editar');
+    btnEditar.addEventListener('click', function editarHandler() {
     const tdNome = tr.querySelector('#nome');
     const tdCnpj = tr.querySelector('#cnpj');
     const nomeAtual = tdNome.textContent;
@@ -45,12 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     tdNome.innerHTML = `<input type="text" class="input-text" value="${nomeAtual}">`;
     tdCnpj.innerHTML = `<input type="text" class="input-text" value="${cnpjAtual}">`;
 
-    const btnEditar = tr.querySelector('#btn-editar');
     btnEditar.textContent = 'Salvar';
-
     btnEditar.replaceWith(btnEditar.cloneNode(true));
     const btnSalvar = tr.querySelector('#btn-editar');
-    btnSalvar.textContent = 'Salvar';
 
     btnSalvar.addEventListener('click', async function salvarHandler() {
         const novoNome = tdNome.querySelector('input').value;
@@ -64,13 +63,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         await atualizarTabela();
     });
+
+    btnRemover.textContent = 'Cancelar';
+    btnRemover.replaceWith(btnRemover.cloneNode(true));
+    const btnCancelar = tr.querySelector('#btn-remover');
+    btnCancelar.addEventListener('click', () => {
+        tdNome.textContent = nomeAtual;
+        tdCnpj.textContent = cnpjAtual;
+        atualizarTabela();
+    });
+
 });
 
-        const btnRemover = tr.querySelector('#btn-remover');
         btnRemover.addEventListener('click', () => {
             removerFornecedor(fornecedor.id);
         });
         tabelaFornecedores.appendChild(tr);
+        
     });
     document.getElementById('pagina-info').innerText = `Página ${paginaAtual}`;
 }
